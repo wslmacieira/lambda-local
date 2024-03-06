@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "start": "sls offline start",
+    "test": "jest --coverage"
+  },
   "dependencies": {
     "aws-sdk": "^2.1571.0",
     "jest": "^29.7.0"

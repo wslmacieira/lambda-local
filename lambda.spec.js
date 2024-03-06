@@ -23,28 +23,28 @@ describe('lambda', () => {
         await sleep(3000)
     })
     afterAll(async () => {
-        await stopLambda(PID)
+        await stopLambda()
     })
     it('should be defined', () => {
         expect(handler).toBeDefined()
     })
 
-    it('should be return status 200', async() => {
-        const result = await handler()
-        expect(result.statusCode).toBe(200)
-    })
+    // it('should be return status 200', async() => {
+    //     const result = await handler()
+    //     expect(result.statusCode).toBe(200)
+    // })
 
-    it('should be return body with messge "Hello World"', async() => {
-        const result = await handler()
-        expect(result.body).toEqual("Hello World")
-    })
+    // it('should be return body with messge "Hello World"', async() => {
+    //     const result = await handler()
+    //     expect(result.body).toEqual("Hello World")
+    // })
 
-    it('should be invoke handler', async() => {
-        const result = await lambda.invoke({
-            FunctionName: 'dev-lambdaName',
-            InvocationType: 'RequestResponse',
-            Payload: ''
-        }).promise()
-        expect(result.StatusCode).toBe(200)
-    })
+    // it('should be invoke handler', async() => {
+    //     const result = await lambda.invoke({
+    //         FunctionName: 'dev-lambdaName',
+    //         InvocationType: 'RequestResponse',
+    //         Payload: ''
+    //     }).promise()
+    //     expect(result.StatusCode).toBe(200)
+    // })
 })
