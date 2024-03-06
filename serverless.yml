@@ -1,0 +1,28 @@
+# serverless.yml
+service: lambda-setup
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  environment:
+    NODE_OPTIONS: '--enable-source-maps' # use source map if available
+
+functions:
+  hello:
+    handler: index.handler # required, handler set in AWS Lambda
+    name: ${sls:stage}-lambdaName # optional, Deployed Lambda name
+    events:
+      - http:
+          path: hello
+          method: get
+    description: Description of what the lambda function does # optional, Description to publish to AWS
+
+custom:
+  serverless-offline:
+    httpPort: 5555
+    noTimeout: true
+    useWorkerThreads: true
+    allowCache: true        
